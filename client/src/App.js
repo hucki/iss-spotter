@@ -4,12 +4,15 @@ import './App.css';
 import ApiClient from './services/ApiService';
 
 function App() {
-  const [zoom, setZoom] = useState(3);
+  const [zoom] = useState(3);
   const [lat, setLat] = useState(51.505);
   const [lng, setLng] = useState(-0.09);
-  const [trail, setTrail] = useState([{lat: 0, lng: 0}]);
+
 
   useEffect(() => {
+    const moveIss = () => {
+      getIssPosition();
+    }
     getIssPosition();
     setInterval(() => moveIss(), 5000)
   }, [])
@@ -21,22 +24,6 @@ function App() {
       setLng(curPosition.iss_position.longitude);
     })
   }
-  const moveIss = () => {
-    getIssPosition();
-  }
-  // function moveISS () {
-  //   $.getJSON('http://api.open-notify.org/iss-now.json?callback=?', function(data) {
-  //       var lat = data['iss_position']['latitude'];
-  //       var lon = data['iss_position']['longitude'];
-
-  //       // See leaflet docs for setting up icons and map layers
-  //       // The update to the map is done here:
-  //       iss.setLatLng([lat, lon]);
-  //       isscirc.setLatLng([lat, lon]);
-  //       map.panTo([lat, lon], animate=true);
-  //   });
-  //   setTimeout(moveISS, 5000);
-  // }
 
   const position = [lat, lng];
   return (
