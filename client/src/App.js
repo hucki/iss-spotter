@@ -4,7 +4,7 @@ import './App.css';
 import ApiClient from './services/ApiService';
 
 function App() {
-  const [zoom, setZoom] = useState(2);
+  const [zoom, setZoom] = useState(3);
   const [lat, setLat] = useState(51.505);
   const [lng, setLng] = useState(-0.09);
   const [trail, setTrail] = useState([{lat: 0, lng: 0}]);
